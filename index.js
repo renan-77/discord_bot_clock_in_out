@@ -9,6 +9,11 @@ const client = new Discord.Client();
 // Declarando prefixo de comandos 
 const prefix = '$'
 
+// Declarando ID's de usuarios manualmente.
+renan_id = '237070442043539456'
+yan_id = '278249562127335424'
+lucas_id = '331910249835397130'
+
 //////////////////////////TEST//////////////////////////
 // Criando um ponto de start para testes com alarm
 const start = Date.now()
@@ -37,21 +42,12 @@ client.on('message', function (message) {
     // Tirando primeiro elemento da array, botando em minusculo e retornando como "command" 
     const command = args.shift().toLowerCase()
 
-<<<<<<< HEAD
     if (command == 'test') {
         // notifyClock(lucas_id)
         message.author.send(`Your user: ${message.author}`)
-=======
-    if(command == 'test'){
-        renan_manual_id = '237070442043539456'
-        user_obj = client.users.cache.get(renan_manual_id)
-        console.log(user_obj)
-        notifyClock(user_obj)
-        // message.author.send(`Your user: ${message.author}`)
-        // notifyClock(user_obj)
->>>>>>> parent of 9a53107... Implemeneted send message to user by id using user obj from fetch
     }
 });
+
 
 //////////////////////////TEST//////////////////////////
 // Criando tempo de execucao 2 segundos apos o tempo de inicio
@@ -61,7 +57,6 @@ console.log(timeForExec)
 if (timeForExec.getDate() == 0 || timeForExec.getDate() == 6) {
     timeForExec.setHours(13, 0, 0)
 
-<<<<<<< HEAD
     alarm(timeForExec, function () {
         notifyClock(renan_id)
     });
@@ -71,50 +66,12 @@ if (timeForExec.getDate() == 0 || timeForExec.getDate() == 6) {
 //alarm.recurring(3000, function() {
 //    notifyClock(yan_id)
 //})
-=======
-// renan_id = '237070442043539456'
-
-// renan_obj =  {
-//     id: '237070442043539456',
-//     system: null,
-//     locale: null,
-//     flags: 0,
-//     username: 'Renanzin',
-//     bot: false,
-//     discriminator: '0626',
-//     avatar: 'b04b60a0df52e6d1344a0effe8e95a2c',
-//     lastMessageChannelID: '822599649151942719',
-//     createdTimestamp: 1476592397939,
-//     defaultAvatarURL: 'https://cdn.discordapp.com/embed/avatars/1.png',
-//     tag: 'Renanzin#0626',
-//     avatarURL: 'https://cdn.discordapp.com/avatars/237070442043539456/b04b60a0df52e6d1344a0effe8e95a2c.webp',
-//     displayAvatarURL: 'https://cdn.discordapp.com/avatars/237070442043539456/b04b60a0df52e6d1344a0effe8e95a2c.webp'
-// }
-
-// console.log(renan_obj)
-
-// const user_obj_promise = client.users.fetch(renan_id)
-//     .then((response) => response.toJSON())
-//     .then((user) => {
-//         return user
-// })
-
-// const get_user_obj = () => {
-//     user_obj_promise.then((a) => {
-//         // console.log(a)
-//     }).catch((error) => {
-//         // console.log(`This is our error: ${error}`)
-//     })
-// }
-// alarm(timeForExec, notifyClock(renan_obj))
->>>>>>> parent of 9a53107... Implemeneted send message to user by id using user obj from fetch
 
 
 /**
  * Funcao para enviar DM's para notificar os usuarios para bater ponto.
- * @param {*} dc_user 
+ * @param {*} user_id
  */
-<<<<<<< HEAD
 function notifyClock(user_id) {
     try {
         client.users.fetch(user_id)
@@ -124,15 +81,6 @@ function notifyClock(user_id) {
                 return user
             })
     } catch (error) {
-=======
-function notifyClock(dc_user){
-    try{
-        console.log(dc_user)
-        dc_user.send('Time to clock in!') 
-    }catch(error){
->>>>>>> parent of 9a53107... Implemeneted send message to user by id using user obj from fetch
         console.error(error);
     }
-    // Getting ID of user and sending message.
-    // client.channels.cache.get(dc_user).send("Hi ${tag_user}, time to clock in!") // Getting ID of channel and sending a message.
 }
