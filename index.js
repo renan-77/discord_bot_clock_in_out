@@ -1,20 +1,15 @@
 const Discord = require('discord.js')
-const config = require('./config.json')
+const config = require('./config//config.json')
 const alarm = require('alarm')
 const fetch = require('node-fetch')
+const mongo = require('./mongo')
+const variables = require('./config/variables')
 
 // Criando objeto de discord (client method)
 const client = new Discord.Client();
 
 // Declarando prefixo de comandos 
 const prefix = '$'
-
-// Declarando ID's de usuarios manualmente.
-const renan_id = '237070442043539456'
-const yan_id = '278249562127335424'
-const lucas_id = '331910249835397130'
-const igor_id = '240231313175478273'
-const zerocal_id = '205703001925615616'
 
 //////////////////////////TEST//////////////////////////
 // Criando um ponto de start para testes com alarm
@@ -58,13 +53,13 @@ var timeForExec = new Date()
 console.log(timeForExec)
 console.log(timeForExec.getDay())
 if (timeForExec.getDay() != 0 || timeForExec.getDay() != 6) {
-    timeForExec.setHours(16, 30, 0)
+    timeForExec.setHours(12, 35, 0)
 
     alarm(timeForExec, function () {
-        notifyClock(renan_id)
-        notifyClock(yan_id)
-        notifyClock(zerocal_id)
-        notifyClock(igor_id)
+        notifyClock(variables.Ids.renan_id)
+        notifyClock(variables.Ids.yan_id)
+        notifyClock(variables.Ids.zerocal_id)
+        notifyClock(variables.Ids.igor_id)
     });
 }
 
