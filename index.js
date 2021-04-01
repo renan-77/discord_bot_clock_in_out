@@ -10,9 +10,11 @@ const client = new Discord.Client();
 const prefix = '$'
 
 // Declarando ID's de usuarios manualmente.
-renan_id = '237070442043539456'
-yan_id = '278249562127335424'
-lucas_id = '331910249835397130'
+const renan_id = '237070442043539456'
+const yan_id = '278249562127335424'
+const lucas_id = '331910249835397130'
+const igor_id = '240231313175478273'
+const zerocal_id = '205703001925615616'
 
 //////////////////////////TEST//////////////////////////
 // Criando um ponto de start para testes com alarm
@@ -54,11 +56,15 @@ client.on('message', function (message) {
 
 var timeForExec = new Date()
 console.log(timeForExec)
-if (timeForExec.getDate() == 0 || timeForExec.getDate() == 6) {
-    timeForExec.setHours(13, 0, 0)
+console.log(timeForExec.getDay())
+if (timeForExec.getDay() != 0 || timeForExec.getDay() != 6) {
+    timeForExec.setHours(16, 30, 0)
 
     alarm(timeForExec, function () {
         notifyClock(renan_id)
+        notifyClock(yan_id)
+        notifyClock(zerocal_id)
+        notifyClock(igor_id)
     });
 }
 
@@ -77,7 +83,7 @@ function notifyClock(user_id) {
         client.users.fetch(user_id)
             .then((user) => {
                 console.log(user)
-                user.send('salve')
+                user.send('ponto')
                 return user
             })
     } catch (error) {
